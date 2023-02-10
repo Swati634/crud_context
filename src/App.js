@@ -1,23 +1,27 @@
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Read from './Component/Read';
+import Signin from './Component/Signin';
+import Signup from './Component/Signup';
+import ContextEx from './Component/ContextEx';
+import UserContext from './UserContext';
+import About from './Component/About';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="main">
+      <h2 className="main-header">React Crud Operations</h2>
+      <BrowserRouter>
+        <Routes>
+          <UserContext.Provider value="Hello">
+            <Route exact path="/" element={<Read />} />
+            <Route exact path="/Signin" element={<Signin />} />
+            <Route exact path="/Signup" element={<Signup />} />
+          </UserContext.Provider>
+        </Routes>
+      </BrowserRouter>
+      <ContextEx />
+      <About />
     </div>
   );
 }
